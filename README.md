@@ -1,6 +1,6 @@
 # Kanvas Steam Deck Setup Guide
 
-![IMG_20260409_204111306](https://github.com/user-attachments/assets/1ded14fa-0db8-499a-86bc-bd0f60efa864)
+![IMG_20260409_204111306](https://github.com/user-attachments/assets/b1f428fa-964d-4f28-9b95-6a5fbf0ee555)
 
 For all you portable gaming device fans. This document details the process for setting up the ROBLOX Launcher known as Kanvas to run on a Steam Deck under SteamOS. The instructions in some ways are much similar to what you need to do according to the official Linux instructions, though there are some things which may be done differently, some extra SteamOS specific steps, and some extra tweaks that we'll need to do in the Wine settings to ensure everything works properly. The SteamOS platform is just a modified version of Arch Linux so we can install packages from the Arch repositories, such as the ASP.NET Core Runtimes required to run the Kanvas web server.
 
