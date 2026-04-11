@@ -12,7 +12,7 @@ Open the Application Launcher menu once in Desktop Mode, move to the **System** 
 
 A terminal window will launch. This is how we will install the ASP.NET 8.0 Runtime packages. It is strongly recommended that you plug in a USB keyboard for these next steps, though you can also bring up a touchscreen operated on-screen keyboard by pressing **Steam + X**
 
-In the Konsole window, type **passwd** and hit Enter. You'll need to set a root password with which to use sudo commands.
+In the Konsole window, type **passwd** and hit Enter. You'll need to set a root password with which to use sudo commands. If you already have a root password, you may skip this step.
 
 After the root password has been set, type **sudo steamos-readonly disable** to unlock the file system. This step is required to install the ASP.NET runtime packages. With the root file system unlocked, we're now ready to move to the next step.
 # Installing Dependencies
