@@ -36,7 +36,7 @@ On the Desktop Mode taskbar, launch the Discover Store and search Lutris while o
 
 With Lutris installed, we are now ready to begin setting up Kanvas to run on SteamOS.
 # Setting Up Kanvas
-You'll need some way of copying Kanvas files to the Steam Deck. You can either use a microSD card in the Steam Deck's built-in SD slot, or a USB storage device which can connect using the USB-C charging port. Refer to the official Kanvas Linux Documentation at https://gitgud.io/playervalley/kanvaslauncherpublic/-/blob/master/docs/Linux.md for setting up Kanvas to run using Proton & Winetricks from the Lutris application. (Credit to valley for publishing this).
+You'll need some way of copying Kanvas files to the Steam Deck. You can either use a microSD card in the Steam Deck's built-in SD slot, or a USB storage device which can connect using the USB-C charging port. Refer to the official Kanvas Linux Documentation at https://gitgud.io/playervalley/kanvaslauncherpublic/-/blob/master/docs/Linux.md for setting up Kanvas to run using Proton & Winetricks from the Lutris application. (Credit to sorelight and playervalley for publishing this).
 
 A couple of things to note while following the Lutris setup instructions in the official documentation:
 * When creating the winepref folder, it's a good idea to put this somewhere not inside the Kanvas folder. This is where Windows system files are staged for the Wine compatibility later and it can become rather large. I find that putting this in the home folder works good.
