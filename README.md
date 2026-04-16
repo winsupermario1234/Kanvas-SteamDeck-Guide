@@ -4,7 +4,9 @@
 
 For all you portable gaming device fans. This document details the process for setting up the ROBLOX Launcher known as Kanvas to run on a Steam Deck under SteamOS. The instructions in some ways are much similar to what you need to do according to the official Linux instructions, though there are some things which may be done differently, some extra SteamOS specific steps, and some extra tweaks that we'll need to do in the Wine settings to ensure everything works properly. The SteamOS platform is just a modified version of Arch Linux so we can install packages from the Arch repositories, such as the ASP.NET Core Runtimes required to run the Kanvas web server.
 
-Please note that this is not currently supported by the Kanvas developers, so everything in here is provided as-is with no guarantees that anything will be free of issues. Don't send them bug reports for Kanvas issues related to SteamOS as this is just a fun experiment I figured out in my freetime that I want to share with everyone who is interested in playing old Roblox clients on the Steam Deck. If you notice that anything in this documentation is errorenous and in need of correction, then feel free to write it on the Issues page and I will fix it. With that being said, let's get started on the setup process.
+Please note that this is not currently supported by the Kanvas developers, so everything in here is provided as-is with no guarantees that anything will be free of issues. Don't send them bug reports for Kanvas issues related to SteamOS as this is just a fun experiment I figured out in my freetime that I want to share with everyone who is interested in playing old Roblox clients on the Steam Deck. If you notice that anything in this documentation is errorenous and in need of correction, then feel free to write it on the Issues page and I will fix it. 
+
+There is a significant limitation with this setup in that each time you install a SteamOS update, you'll need to repeat everything in this guide to reinstall the ASP.NET runtime packages onto your root file system. There does not seem to be any workaround to this other than not installing any updates, which is unadvisable for security reasons. With that being said, let's get started with the initial setup tasks.
 # Getting Started
 The first thing we'll need to do is enter **Desktop Mode** from Steam's big picture mode. Press the Steam Button and scroll down to **Power** and then select **Switch to Desktop**
 
@@ -16,17 +18,16 @@ In the Konsole window, type **passwd** and hit Enter. You'll need to set a root 
 
 After the root password has been set, type **sudo steamos-readonly disable** to unlock the file system. This step is required to install the ASP.NET runtime packages. With the root file system unlocked, we're now ready to move to the next step.
 # Installing Dependencies
-Run the commands **sudo pacman -Syu** and then **sudo pacman -S aspnet-runtime-8.0** in the Konsole window. This will ensure all your other system packages are up to date and then will install the ASP.NET packages available in the Arch repositories.
 
-**IMPORTANT: If you are running into keyring errors with pacman**
+**IMPORTANT: Read or else you will get pacman keyring errors!!!**
 
-More likely than not, you may have not manually installed packages on your Steam Deck's operating system using the pacman package manager. If you go long enough without doing this on many Linux distros, it can cause the keyring to go stale. This results in keyring errors because the GPG keys stored locally cannot be verified by the package manager, and so the chain of trust can't be properly established. If this is your case, please follow the steps below to re-initialize the pacman keyring.
+SteamOS's base image comes with a pacman keyring that does not have any way of verifying packages in the Arch repositories. To fix this, we need to manually initialize the keyring and then populate it with the **holo** keys. Holo is the branch which contains the SteamOS specific packages for Arch based distributions, so we want to initialize the keyring with Holo, though we can still install the key packages for both Holo and Arch. Please follow the guide below to initialize the keyring and load in the relevant GPG keys to get pacman working.
 
 1. Open the pacman configuration file with the command **sudo nano /etc/pacman.conf**
 2. Look for the line **SigLevel = Required DatabaseOptional** and change it to **SigLevel = TrustAll** and then press **Ctrl + O** to save the changes, followed by **Ctrl + X** to exit. If you are using the SteamOS on-screen keyboard, you will need to bind one of the buttons to trigger the Ctrl key when pressed as there is no Ctrl button on the on-screen keyboard.
-3. After exiting the text editor, run **sudo pacman-key --populate holo** followed by **sudo pacman -Sy holo-keyring archlinux-keyring**
+3. After exiting the text editor, run **sudo pacman-key --init** and then **sudo pacman-key --populate holo** followed by **sudo pacman -Sy holo-keyring archlinux-keyring**
 4. Open /etc/pacman.conf in nano again with **sudo nano /etc/pacman.conf** and change **SigLevel = TrustAll** back to **SigLevel = Required DatabaseOptional** and then hit **Ctrl + O** to save and **Ctrl + X** to exit.
-5. Run **sudo pacman -Syu** and then **sudo pacman -S aspnet-runtime-8.0** and ASP.NET should now install.
+5. As soon as the keyring is initialized, we can now install the required ASP.NET 8.0 packages for the Kanvas webserver. Run **sudo pacman -Syu** and then **sudo pacman -S aspnet-runtime-8.0** and ASP.NET should now install.
 
 Once ASP.NET 8.0 has been installed, be sure to run **sudo steamos-readonly enable** to re-enable write protection on the root file system. You may now set aside the Konsole window for now, though we will need it again for later.
 
