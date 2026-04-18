@@ -6,7 +6,7 @@ For all you portable gaming device fans. This document details the process for s
 
 Please note that this is not currently supported by the Kanvas developers, so everything in here is provided as-is with no guarantees that anything will be free of issues. Don't send them bug reports for Kanvas issues related to SteamOS as this is just a fun experiment I figured out in my freetime that I want to share with everyone who is interested in playing old Roblox clients on the Steam Deck. If you notice that anything in this documentation is errorenous and in need of correction, then feel free to write it on the Issues page and I will fix it. 
 
-There is a significant limitation with this setup in that each time you install a SteamOS update, you'll need to repeat everything in this guide to reinstall the ASP.NET runtime packages onto your root file system. There does not seem to be any workaround to this other than not installing any updates, which is unadvisable for security reasons. With that being said, let's get started with the initial setup tasks.
+**IMPORTANT: There is a significant limitation with this setup in that each time you install a SteamOS update, you'll need to repeat everything in this guide to reinstall the ASP.NET runtime packages onto your root file system. There does not seem to be any workaround to this other than not installing any updates, which is unadvisable for security reasons. With that being said, let's get started with the initial setup tasks.**
 # Getting Started
 The first thing we'll need to do is enter **Desktop Mode** from Steam's big picture mode. Press the Steam Button and scroll down to **Power** and then select **Switch to Desktop**
 
